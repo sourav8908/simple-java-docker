@@ -1,19 +1,14 @@
-# stable official Java runtime base image
+# 1. Use a lightweight base image with Java pre-installed
 FROM openjdk:17-jdk-alpine
 
-# metadata
-LABEL maintainer="your-email@example.com"
-LABEL version="1.0"
-LABEL description="A simple Java application"
-
-# working directory
+# 2. Set a working directory inside the container
 WORKDIR /app
 
-# Copy source code into the container
-COPY src/Main.java /app/Main.java
+# 3. Copy the Java source file from your host machine into the container
+COPY src/Main.java .
 
-# Compile the Java code
+# 4. Compile the Java program inside the container
 RUN javac Main.java
 
-# Run the Java application when the container starts
+# 5. Command to run the Java program when the container starts
 CMD ["java", "Main"]
